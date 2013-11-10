@@ -64,6 +64,7 @@
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Unit.cpp" />
   </ItemGroup>
@@ -71,6 +72,7 @@
     <ClInclude Include="Building.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Soldier.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Unit.h" />
   </ItemGroup>

@@ -8,15 +8,24 @@ class Map
 private:
 	const int width;
 	const int height;
+
+	Tile** tiles;
+
 	const int terrainTileWidth;
 	const int terrainTileHeight;
 	const int terrainTileSheetCols;
 	ALLEGRO_BITMAP* terrainTileSheet;
-	Tile** tiles;
+
+	const int unitTileWidth;
+	const int unitTileHeight;
+	const int unitTileSheetCols;
+	 ALLEGRO_BITMAP* unitTileSheet;
+
 public:
-	Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet);
+	Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet,  ALLEGRO_BITMAP* unitTileSheet);
 	~Map(void);
 	void Draw(float interpolation);
 	void setTerrainAt(int x, int y, Terrain terrain);
+	void setUnitAt(int x, int y, Unit* unit);
 };
 

@@ -5,6 +5,8 @@
 Tile::Tile()
 {
 	terrain = GRASS;
+	building = NULL;
+	unit = NULL;
 }
 
 Tile::Tile(Terrain terrain) : terrain(terrain)
@@ -14,14 +16,15 @@ Tile::Tile(Terrain terrain) : terrain(terrain)
 
 Tile::~Tile(void)
 {
+	if(building != NULL)
+		delete building;
+	if(unit != NULL)
+		delete unit;
 }
 
-Terrain Tile::getTerrain()
+void Tile::setUnit(Unit* unit)
 {
-	return terrain;
-}
-
-void Tile::setTerrain(Terrain terrain)
-{
-	this->terrain = terrain;
+	if(this->unit != NULL)
+		delete this->unit;
+	this->unit = unit;
 }

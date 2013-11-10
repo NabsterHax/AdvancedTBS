@@ -16,6 +16,7 @@
 
 #include "Globals.h"
 #include "Map.h"
+#include "Soldier.h"
 
 Map* testMap;
 
@@ -85,8 +86,10 @@ int main()
 	//====================================
 
 	ALLEGRO_BITMAP* terrainTileSheet = al_load_bitmap("Resources/TerrainTiles.png");
-	testMap = new Map(10, 10, terrainTileSheet);
+	ALLEGRO_BITMAP* unitTileSheet = al_load_bitmap("Resources/groundunits.png");
+	testMap = new Map(10, 10, terrainTileSheet, unitTileSheet);
 	testMap->setTerrainAt(2, 9, WATER);
+	testMap->setUnitAt(2, 2, new Soldier());
 
 	//====================================
 	// GAME LOOP VARS
