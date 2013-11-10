@@ -15,17 +15,16 @@
 #include <allegro5/allegro_acodec.h>
 
 #include "Globals.h"
+#include "Map.h"
 
-#include <vector>
+Map* testMap;
 
 void Update();
-void Draw();
+void Draw(float interpolation);
 
 int main()
 {
 	bool gameRunning = true;
-
-	int now[5][2];
 
 	//TODO: have these set by file, and editable in options menu.
 	int maxFPS = 1000;
@@ -84,7 +83,9 @@ int main()
 	//====================================
 	// GAMEPLAY INIT
 	//====================================
-	
+
+	ALLEGRO_BITMAP* terrainTileSheet = al_load_bitmap("Resources/TerrainTiles.png");
+	testMap = new Map(10, 10, terrainTileSheet);
 
 	//====================================
 	// GAME LOOP VARS
@@ -135,7 +136,7 @@ int main()
 		{
 			interpolation = (al_get_time() - timeOfTick) * double(TICKRATE);
 			//Objects draw themselves
-			Draw();
+			Draw(interpolation);
 
 			if(VSync) { al_wait_for_vsync(); }
 			al_flip_display();
@@ -147,6 +148,8 @@ int main()
 	// DESTROY OBJECTS
 	//====================================
 
+	delete testMap;
+
 	al_destroy_timer(tickTimer);
 	al_destroy_timer(drawTimer);
 	al_destroy_event_queue(eventQueue);
@@ -157,6 +160,7 @@ void Update()
 {
 }
 
-void Draw()
+void Draw(float interpolation)
 {
+	testMap->Draw(interpolation);
 }
