@@ -28,3 +28,10 @@ void Tile::setUnit(Unit* unit)
 		delete this->unit;
 	this->unit = unit;
 }
+
+void Tile::setBuilding(Building* building)
+{
+	if(this->building != NULL)
+		delete this->building;
+	this->building = building;
+}

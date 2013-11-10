@@ -43,7 +43,7 @@ int main()
 	if(!al_init()) 
 	{
 		al_show_native_message_box(NULL, "Error", "", 
-			"failed to initialize allegro!", NULL, NULL);                   
+			"failed to initialize allegro!", NULL, NULL);
 		return -1;
 	}
 
@@ -86,10 +86,12 @@ int main()
 	//====================================
 
 	ALLEGRO_BITMAP* terrainTileSheet = al_load_bitmap("Resources/TerrainTiles.png");
+	ALLEGRO_BITMAP* buildingTileSheet = al_load_bitmap("Resources/buildings.png");
 	ALLEGRO_BITMAP* unitTileSheet = al_load_bitmap("Resources/groundunits.png");
-	testMap = new Map(10, 10, terrainTileSheet, unitTileSheet);
+	testMap = new Map(10, 10, terrainTileSheet, buildingTileSheet, unitTileSheet);
 	testMap->setTerrainAt(2, 9, WATER);
 	testMap->setUnitAt(2, 2, new Soldier());
+	testMap->setBuildingAt(2, 2, new Building(HQ, RED));
 
 	//====================================
 	// GAME LOOP VARS
@@ -153,6 +155,10 @@ int main()
 	//====================================
 
 	delete testMap;
+
+	al_destroy_bitmap(unitTileSheet);
+	al_destroy_bitmap(buildingTileSheet);
+	al_destroy_bitmap(terrainTileSheet);
 
 	al_destroy_timer(tickTimer);
 	al_destroy_timer(drawTimer);

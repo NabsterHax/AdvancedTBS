@@ -6,12 +6,14 @@
 #include "Globals.h"
 #include "Tile.h"
 
-Map::Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet, ALLEGRO_BITMAP* unitTileSheet) : 
+Map::Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet, ALLEGRO_BITMAP* buildingTileSheet, ALLEGRO_BITMAP* unitTileSheet) : 
 	width(width), 
 	height(height),
 	terrainTileWidth(32),
 	terrainTileHeight(32),
 	terrainTileSheetCols(3),
+	buildingTileWidth(32),
+	buildingTileHeight(32),
 	unitTileWidth(32),
 	unitTileHeight(32),
 	unitTileSheetCols(5)
@@ -21,6 +23,7 @@ Map::Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet, ALLEGRO_BITMAP
 		tiles[i] = new Tile[height];
 
 	this->terrainTileSheet = terrainTileSheet;
+	this->buildingTileSheet = buildingTileSheet;
 	this->unitTileSheet = unitTileSheet;
 }
 
@@ -45,6 +48,18 @@ void Map::Draw(float interpolation)
 				i*terrainTileWidth,
 				j*terrainTileHeight,
 				0);
+
+			if(tiles[i][j].getBuilding() != NULL)
+			{
+				al_draw_bitmap_region(buildingTileSheet,
+					tiles[i][j].getBuilding()->getBuildingType() * buildingTileWidth,
+					tiles[i][j].getBuilding()->getSide() * buildingTileHeight,
+					buildingTileWidth,
+					buildingTileHeight,
+					i*terrainTileWidth,
+					j*buildingTileHeight,
+					0);
+			}
 
 			if(tiles[i][j].getUnit() != NULL)
 			{
@@ -76,4 +91,13 @@ void Map::setUnitAt(int x, int y, Unit* unit)
 	else
 		al_show_native_message_box(NULL, "Error", "", 
 			"unit set out of map bounds", NULL, NULL);
+}
+
+void Map::setBuildingAt(int x, int y, Building* building)
+{
+	if(x > 0 && x < width && y > 0 && y < width)
+		tiles[x][y].setBuilding(building);
+	else
+		al_show_native_message_box(NULL, "Error", "", 
+			"building set out of map bounds", NULL, NULL);
 }
