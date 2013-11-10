@@ -16,29 +16,9 @@ Action Building::getActions(Side turn)
 	}
 	else
 	{
-		return NONE;
+		return ANONE;
 	}
 
-}
-
-Action Building::getActions(Side turn, UnitType unitType)
-{
-	//If the unit is allied to the building
-	if (side == turn)
-	{
-		return NONE;
-	}
-	else
-	{
-		//if (unitType == INFANTRY)
-		//{
-		//	return CAPTURE;
-		//}
-		//else
-		//{
-		//	return NONE;
-		//}
-	}
 }
 
 
