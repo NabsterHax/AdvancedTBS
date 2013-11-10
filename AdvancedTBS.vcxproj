@@ -77,6 +77,8 @@
     <ClInclude Include="Unit.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\buildings.png" />
+    <None Include="Resources\groundunits.png" />
     <None Include="Resources\TerrainTiles.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

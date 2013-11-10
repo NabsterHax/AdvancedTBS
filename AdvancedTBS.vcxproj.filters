@@ -64,5 +64,11 @@
     <None Include="Resources\TerrainTiles.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\buildings.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\groundunits.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
