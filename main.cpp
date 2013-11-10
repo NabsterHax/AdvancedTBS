@@ -15,7 +15,6 @@
 #include <allegro5/allegro_acodec.h>
 
 #include "Globals.h"
-
 #include <vector>
 
 void Update();
