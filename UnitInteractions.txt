@@ -1,0 +1,25 @@
++--+ Interactions +--+
+Primary Unit | Secondary Unit | Resulting action
+-------------+----------------+----------------------------
+ Soldier	 | Building		  | if allied NONE else CAPTURE
+ or Mech	 | APC			  | if allied LOAD else if rangeCheck && typeMatchCheck ATTACK else NONE
+			 | Lander		  | if allied LOAD else if rangeCheck && typeMatchCheck ATTACK else NONE 
+			 | Trans Chopper  | if allied LOAD else if rangeCheck && typeMatchCheck ATTACK else NONE 
+			 | Unit			  | if allied NONE else if rangeCheck && typeMatchCheck ATTACK else NONE 
+-------------+----------------+----------------------------
+Tank, H.Tank,| Unit           | if allied NONE else if rangeCheck && typeMatchCheck ATTACK else NONE
+Arty, Rockets| Building		  | NONE
+Missiles     |				  |
+-------------+----------------+----------------------------
+APC          | ANY			  | NONE
+-------------+----------------+----------------------------
+BShip, Sub,  | Unit           | if allied NONE else if rangeCheck && typeMatchCheck ATTACK else NONE
+Cruiser		 | Building		  | NONE
+-------------+----------------+----------------------------
+Lander		 | ANY            | NONE
+-------------+----------------+----------------------------
+Fighter		 | Unit			  | if allied NONE else if rangeCheck && typeMatchCheck ATTACK else NONE
+Bomber		 | Building		  | NONE
+BCopter		 |				  |
+-------------+----------------+----------------------------
+TCopter		 | ANY			  | NONE

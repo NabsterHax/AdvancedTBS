@@ -61,10 +61,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Building.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Tile.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="Unit.cpp" />
+=======
+>>>>>>> 9a50fffd2685a0c740a0f4c2813b5aca3fd6c229
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Building.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Tile.h" />
+<<<<<<< HEAD
+    <ClInclude Include="Unit.h" />
+=======
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TerrainTiles.png" />
+>>>>>>> 9a50fffd2685a0c740a0f4c2813b5aca3fd6c229
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

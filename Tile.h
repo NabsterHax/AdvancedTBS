@@ -1,13 +1,17 @@
 #pragma once
 
+#include "Globals.h"
+
 class Tile
 {
 private:
-	int terrain;
+	Terrain terrain;
 	int building;
 	int unit;
 public:
-	Tile(void);
+	Tile();
+	Tile(Terrain terrain);
 	~Tile(void);
+	Terrain getTerrain();
 };
 

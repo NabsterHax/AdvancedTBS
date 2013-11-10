@@ -1,11 +1,22 @@
 #include "Tile.h"
 
+#include "Globals.h"
 
-Tile::Tile(void)
+Tile::Tile()
+{
+	terrain = GRASS;
+}
+
+Tile::Tile(Terrain terrain) : terrain(terrain)
 {
 }
 
 
 Tile::~Tile(void)
 {
+}
+
+Terrain Tile::getTerrain()
+{
+	return terrain;
 }
