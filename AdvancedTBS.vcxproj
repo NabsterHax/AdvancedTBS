@@ -77,9 +77,6 @@
   <ItemGroup>
     <None Include="Resources\TerrainTiles.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TerrainTiles.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
