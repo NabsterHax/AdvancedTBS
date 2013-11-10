@@ -15,6 +15,10 @@
 #include <allegro5/allegro_acodec.h>
 
 #include "Globals.h"
+<<<<<<< HEAD
+=======
+#include <vector>
+>>>>>>> 9b869afecd7a095968db3db71062a1ed10c3bedb
 
 void Update();
 void Draw();
