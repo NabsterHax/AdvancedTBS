@@ -1,7 +1,7 @@
 /*
 
-	ComboNinja
-		by Fraser Cameron
+	AdvancedTBS
+		main.cpp
 
 */
 
@@ -14,22 +14,12 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
+#include "Globals.h"
+
 #include <vector>
 
-#include "Globals.h"
-#include "Ninja.h"
-
-bool keys[] = {false, false, false, false, false, false};
-bool mouse[] = {false, false};
-float mouseX = 0;
-float mouseY = 0;
-
-std::vector<SwordAnim>* basicSwordAnims;
-
-
-void HandleKey(int keycode, bool pressed);
-void HandleMouse(int btn, bool pressed);
-void InitSwordAnims();
+void Update();
+void Draw();
 
 int main()
 {
@@ -44,7 +34,6 @@ int main()
 	ALLEGRO_EVENT_QUEUE *eventQueue;
 	ALLEGRO_TIMER *tickTimer;
 	ALLEGRO_TIMER *drawTimer;
-	ALLEGRO_FONT *font18;
 
 	//====================================
 	// INIT AND CREATE DISPLAY
@@ -93,13 +82,6 @@ int main()
 	//====================================
 	// GAMEPLAY INIT
 	//====================================
-
-	font18 = al_load_font("arial.ttf", 18, 0);
-
-	InitSwordAnims();
-
-	ALLEGRO_BITMAP* swordImg = al_load_bitmap("swordBlack.png");
-	Ninja* player = new Ninja(100, 100, swordImg, basicSwordAnims);
 	
 
 	//====================================
@@ -138,34 +120,12 @@ int main()
 				if(ev.timer.source == tickTimer)
 				{
 					timeOfTick = al_get_time();
-					//update game objects
-					player->Update(keys, mouse, mouseX, mouseY);
+					Update();
 				}
 				else if(ev.timer.source == drawTimer)
 				{
 					draw = true;
 				}
-			}
-			else if(ev.type == ALLEGRO_EVENT_MOUSE_AXES)
-			{
-				mouseX = ev.mouse.x;
-				mouseY = ev.mouse.y;
-			}
-			else if(ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
-			{
-				HandleMouse(ev.mouse.button, true);
-			}
-			else if (ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
-			{
-				HandleMouse(ev.mouse.button, false);
-			}
-			else if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
-			{
-				HandleKey(ev.keyboard.keycode, true);
-			}
-			else if(ev.type == ALLEGRO_EVENT_KEY_UP)
-			{
-				HandleKey(ev.keyboard.keycode, false);
 			}
 		}
 
@@ -173,10 +133,7 @@ int main()
 		{
 			interpolation = (al_get_time() - timeOfTick) * double(TICKRATE);
 			//Objects draw themselves
-			player->Draw(interpolation);
-
-			//debug
-			//al_draw_textf(font18, al_map_rgb(255, 0, 255),10, 10, 0, "curFrame: %i", player->debugAnim());
+			Draw();
 
 			if(VSync) { al_wait_for_vsync(); }
 			al_flip_display();
@@ -188,77 +145,16 @@ int main()
 	// DESTROY OBJECTS
 	//====================================
 
-	delete player;
-	delete basicSwordAnims;
-
-	al_destroy_bitmap(swordImg);
-
-	al_destroy_font(font18);
 	al_destroy_timer(tickTimer);
 	al_destroy_timer(drawTimer);
 	al_destroy_event_queue(eventQueue);
 	al_destroy_display(display);
 }
 
-void HandleKey(int keycode, bool pressed)
+void Update()
 {
-	switch(keycode)
-	{
-	case ALLEGRO_KEY_W:
-		keys[W] = pressed;
-		break;
-	case ALLEGRO_KEY_A:
-		keys[A] = pressed;
-		break;
-	case ALLEGRO_KEY_S:
-		keys[S] = pressed;
-		break;
-	case ALLEGRO_KEY_D:
-		keys[D] = pressed;
-		break;
-	case ALLEGRO_KEY_SPACE:
-		keys[SPACE] = pressed;
-		break;
-	case ALLEGRO_KEY_LSHIFT:
-		keys[SHIFT] = pressed;
-		break;
-	}
 }
 
-void HandleMouse(int btn, bool pressed)
+void Draw()
 {
-	switch(btn)
-	{
-	case 1:
-		mouse[LEFT] = pressed;
-	case 2:
-		mouse[RIGHT] = pressed;
-	}
-}
-
-void InitSwordAnims()
-{
-	basicSwordAnims = new std::vector<SwordAnim>();
-	
-	std::vector<SwordFrame> anim;
-	//Idle
-	anim.push_back(SwordFrame(13, -13, 1.7, false, 60));
-	anim.push_back(SwordFrame(13, -12, 1.75, false, 60));
-	basicSwordAnims->push_back(SwordAnim(anim, true));
-	anim.clear();
-
-	//Swing1
-	anim.push_back(SwordFrame(13, -13, 1.7, false, 10));
-	anim.push_back(SwordFrame(10, -13, 1.0, false, 10));
-	anim.push_back(SwordFrame(0, -13, 0, false, 10));
-	anim.push_back(SwordFrame(-7, -15, -1, false, 20));
-	anim.push_back(SwordFrame(-7, -15, -1.7, false, 30));
-	basicSwordAnims->push_back(SwordAnim(anim));
-	anim.clear();
-
-	//Swing2
-	anim.push_back(SwordFrame(10, -10, 0, false, 2));
-
-	basicSwordAnims->push_back(SwordAnim(anim));
-	anim.clear();
 }
