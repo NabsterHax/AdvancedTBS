@@ -15,7 +15,6 @@ Action Building::getActions(Side turn, UnitType unitType)
 	}
 	else
 	{
-		if (
 	}
 }
 

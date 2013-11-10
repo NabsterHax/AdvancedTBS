@@ -33,9 +33,7 @@ void Map::Draw(float interpolation)
 	for(int i = 0; i < width; i++)
 		for(int j = 0; j < height; j++)
 		{
-			al_draw_bitmap_region(terrainTileSheet, 
-				tiles[i][j].getTerrain()*terrainTileWidth % terrainTileSheetCols,
-				tiles[i][j].getTerrain()*terrainTileHeight / terrainTileSheetCols,
+			al_draw_bitmap_region(terrainTileSheet,
 				(tiles[i][j].getTerrain() % terrainTileSheetCols) * terrainTileWidth,
 				(tiles[i][j].getTerrain() / terrainTileSheetCols) * terrainTileHeight,
 				terrainTileWidth,
