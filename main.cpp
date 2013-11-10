@@ -16,14 +16,14 @@
 
 #include "Globals.h"
 
-#include <vector>
-
 void Update();
 void Draw();
 
 int main()
 {
 	bool gameRunning = true;
+
+	int now[5][2];
 
 	//TODO: have these set by file, and editable in options menu.
 	int maxFPS = 1000;
