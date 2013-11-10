@@ -24,15 +24,12 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Building.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-=======
->>>>>>> 9a50fffd2685a0c740a0f4c2813b5aca3fd6c229
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h">

@@ -41,7 +41,7 @@ int main()
 	//====================================
 	if(!al_init()) 
 	{
-		al_show_native_message_box(NULL, NULL, NULL, 
+		al_show_native_message_box(NULL, "Error", "", 
 			"failed to initialize allegro!", NULL, NULL);                   
 		return -1;
 	}
@@ -53,7 +53,7 @@ int main()
 
 	if(!display) 
 	{
-		al_show_native_message_box(NULL, NULL, NULL, 
+		al_show_native_message_box(NULL, "Error", "", 
 			"failed to initialize display!", NULL, NULL);
 		return -1;
 	}
@@ -86,6 +86,7 @@ int main()
 
 	ALLEGRO_BITMAP* terrainTileSheet = al_load_bitmap("Resources/TerrainTiles.png");
 	testMap = new Map(10, 10, terrainTileSheet);
+	testMap->setTerrainAt(2, 9, WATER);
 
 	//====================================
 	// GAME LOOP VARS

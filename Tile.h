@@ -13,5 +13,6 @@ public:
 	Tile(Terrain terrain);
 	~Tile(void);
 	Terrain getTerrain();
+	void setTerrain(Terrain terrain);
 };
 

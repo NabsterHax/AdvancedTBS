@@ -20,3 +20,8 @@ Terrain Tile::getTerrain()
 {
 	return terrain;
 }
+
+void Tile::setTerrain(Terrain terrain)
+{
+	this->terrain = terrain;
+}
