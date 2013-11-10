@@ -17,5 +17,6 @@ public:
 	Map(int width, int height, ALLEGRO_BITMAP* terrainTileSheet);
 	~Map(void);
 	void Draw(float interpolation);
+	void setTerrainAt(int x, int y, Terrain terrain);
 };
 
