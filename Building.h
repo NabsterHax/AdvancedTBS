@@ -11,6 +11,5 @@ public:
 	Building(BuildingType type, Side side);
 	~Building(void);
 	Action getActions(Side turn);
-	Action getActions(Side turn, UnitType unitType);
 };
 
