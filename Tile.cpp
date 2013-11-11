@@ -7,6 +7,8 @@ Tile::Tile()
 	terrain = GRASS;
 	building = NULL;
 	unit = NULL;
+
+	drawOverlay = false;
 }
 
 Tile::Tile(Terrain terrain) : terrain(terrain)

@@ -14,14 +14,18 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
+#include <list>
+
 #include "Globals.h"
 #include "Map.h"
 #include "Soldier.h"
+#include "Mech.h"
 
 Map* testMap;
 
 void Update();
 void Draw(float interpolation);
+void HandleInput(const ALLEGRO_EVENT& ev);
 
 int main()
 {
@@ -90,7 +94,13 @@ int main()
 	ALLEGRO_BITMAP* unitTileSheet = al_load_bitmap("Resources/groundunits.png");
 	testMap = new Map(10, 10, terrainTileSheet, buildingTileSheet, unitTileSheet);
 	testMap->setTerrainAt(2, 9, WATER);
+	testMap->setTerrainAt(2, 3, WATER);
+	testMap->setTerrainAt(1, 2, MOUNTAIN);
+	testMap->setTerrainAt(6, 4, MOUNTAIN);
+	testMap->setTerrainAt(6, 3, MOUNTAIN);
 	testMap->setUnitAt(2, 2, new Soldier());
+	testMap->setUnitAt(8, 7, new Soldier());
+	testMap->setUnitAt(4, 4, new Soldier());
 	testMap->setBuildingAt(2, 2, new Building(HQ, RED));
 
 	//====================================
@@ -136,6 +146,8 @@ int main()
 					draw = true;
 				}
 			}
+			else
+				HandleInput(ev);
 		}
 
 		if(draw || !limitedFPS)
@@ -173,4 +185,14 @@ void Update()
 void Draw(float interpolation)
 {
 	testMap->Draw(interpolation);
+}
+
+void HandleInput(const ALLEGRO_EVENT& ev)
+{
+	if(ev.type == ALLEGRO_EVENT_MOUSE_AXES
+		|| ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN
+		|| ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
+	{
+		testMap->EventMouse(ev);
+	}
 }

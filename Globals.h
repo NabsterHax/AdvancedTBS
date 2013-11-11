@@ -11,3 +11,14 @@ enum Action {NONE, CAPTURE, CREATE_UNIT};
 enum UnitType {SOLDIER, MECH, RECON, TANK, HTANK, APC, ARTILERY, ROCKETS, AA, MISSILES, BSHIP, CRUISER, LANDER, SUB, FIGHTER, BOMBER, BCHOPPER, TCHOPPER};
 enum Side {NEUTRAL, RED, BLUE};
 enum Terrain {GRASS, BEACH, ROAD, WATER, MOUNTAIN, FOREST};
+const int terrainNumber = 6;
+
+struct Coord 
+{
+public:
+	int x;
+	int y;
+	Coord() : x(0), y(0) {}
+	Coord(int x, int y) : x(x), y(y) {}
+	bool operator==(const Coord& a) { return (x == a.x) && (y == a.y); }
+};
