@@ -36,6 +36,9 @@
     <ClCompile Include="Mech.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Recon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mech.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

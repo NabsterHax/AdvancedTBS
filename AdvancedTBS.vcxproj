@@ -65,6 +65,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mech.cpp" />
+    <ClCompile Include="Recon.cpp" />
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -74,6 +75,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mech.h" />
+    <ClInclude Include="Recon.h" />
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Unit.h" />

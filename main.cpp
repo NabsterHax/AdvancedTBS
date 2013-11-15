@@ -20,6 +20,7 @@
 #include "Map.h"
 #include "Soldier.h"
 #include "Mech.h"
+#include "Recon.h"
 
 Map* testMap;
 
@@ -93,15 +94,37 @@ int main()
 	ALLEGRO_BITMAP* buildingTileSheet = al_load_bitmap("Resources/buildings.png");
 	ALLEGRO_BITMAP* unitTileSheet = al_load_bitmap("Resources/groundunits.png");
 	testMap = new Map(10, 10, terrainTileSheet, buildingTileSheet, unitTileSheet);
-	testMap->setTerrainAt(2, 9, WATER);
-	testMap->setTerrainAt(2, 3, WATER);
-	testMap->setTerrainAt(1, 2, MOUNTAIN);
-	testMap->setTerrainAt(6, 4, MOUNTAIN);
-	testMap->setTerrainAt(6, 3, MOUNTAIN);
-	testMap->setUnitAt(2, 2, new Soldier());
-	testMap->setUnitAt(8, 7, new Soldier());
-	testMap->setUnitAt(4, 4, new Soldier());
-	testMap->setBuildingAt(2, 2, new Building(HQ, RED));
+	testMap->setTerrainAt(2, 1, ROAD);
+	testMap->setTerrainAt(3, 1, ROAD);
+	testMap->setTerrainAt(4, 1, ROAD);
+	testMap->setTerrainAt(5, 1, ROAD);
+	testMap->setTerrainAt(5, 2, ROAD);
+	testMap->setTerrainAt(6, 2, ROAD);
+	testMap->setTerrainAt(6, 3, ROAD);
+	testMap->setTerrainAt(6, 4, ROAD);
+	testMap->setTerrainAt(6, 5, ROAD);
+	testMap->setTerrainAt(6, 6, ROAD);
+	testMap->setTerrainAt(6, 7, ROAD);
+	testMap->setTerrainAt(6, 8, ROAD);
+	testMap->setTerrainAt(7, 8, ROAD);
+	testMap->setTerrainAt(3, 2, FOREST);
+	testMap->setTerrainAt(4, 2, FOREST);
+	testMap->setTerrainAt(5, 3, FOREST);
+	testMap->setTerrainAt(5, 4, FOREST);
+	testMap->setTerrainAt(3, 4, MOUNTAIN);
+	testMap->setTerrainAt(3, 5, MOUNTAIN);
+	testMap->setTerrainAt(4, 5, MOUNTAIN);
+	testMap->setTerrainAt(4, 6, MOUNTAIN);
+	testMap->setTerrainAt(5, 0, WATER);
+	testMap->setTerrainAt(6, 0, WATER);
+	testMap->setTerrainAt(6, 1, WATER);
+	testMap->setTerrainAt(7, 1, WATER);
+	testMap->setTerrainAt(7, 2, WATER);
+	testMap->setUnitAt(3, 2, new Soldier());
+	testMap->setUnitAt(8, 7, new Mech());
+	testMap->setUnitAt(2, 1, new Recon());
+	testMap->setBuildingAt(1, 1, new Building(HQ, RED));
+	testMap->setBuildingAt(8, 8, new Building(HQ, BLUE));
 
 	//====================================
 	// GAME LOOP VARS

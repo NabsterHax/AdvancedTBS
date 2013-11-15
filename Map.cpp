@@ -96,7 +96,7 @@ void Map::Draw(float interpolation)
 
 void Map::setTerrainAt(int x, int y, Terrain terrain)
 {
-	if(x > 0 && x < width && y > 0 && y < width)
+	if(x >= 0 && x < width && y >= 0 && y < width)
 		tiles[x][y].setTerrain(terrain);
 	else
 		al_show_native_message_box(NULL, "Error", "", 
@@ -142,6 +142,7 @@ void Map::EventMouse(const ALLEGRO_EVENT& ev)
 			ClearTileOverlays();
 			StartUnitMove(coord);
 		}
+
 	}
 	else if(ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
 	{
